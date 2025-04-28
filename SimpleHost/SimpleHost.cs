@@ -31,26 +31,36 @@ namespace socketS
             listener.Bind(localEndPoint);
             listener.Listen(10);
 
-            //通信の確立
-            Socket handler = listener.Accept();
+            for (int i = 0; i < 10; i++)
+            {
+                //通信の確立
+                Socket handler = listener.Accept();
+
+                // クライアントのIPアドレスを取得して出力
+                IPEndPoint remoteIpEndPoint = handler.RemoteEndPoint as IPEndPoint;
+                if (remoteIpEndPoint != null)
+                {
+                    Console.WriteLine($"接続元のIPアドレス: {remoteIpEndPoint.Address}");
+                }
 
 
-            // 任意の処理
-            //データの受取をReceiveで行う。
-            int bytesRec = handler.Receive(bytes);
-            string data1 = Encoding.UTF8.GetString(bytes, 0, bytesRec);
-            Console.WriteLine(data1);
+                // 任意の処理
+                //データの受取をReceiveで行う。
+                int bytesRec = handler.Receive(bytes);
+                string data1 = Encoding.UTF8.GetString(bytes, 0, bytesRec);
+                Console.WriteLine(data1);
 
-            //大文字に変更
-            data1 = data1.ToUpper();
+                //大文字に変更
+                data1 = data1.ToUpper();
+                data1 += $" From Server {i}番目";
 
-            //クライアントにSendで返す。
-            byte[] msg = Encoding.UTF8.GetBytes(data1);
-            handler.Send(msg);
-
-            //ソケットの終了
-            handler.Shutdown(SocketShutdown.Both);
-            handler.Close();
+                //クライアントにSendで返す。
+                byte[] msg = Encoding.UTF8.GetBytes(data1);
+                handler.Send(msg);
+                //ソケットの終了
+                handler.Shutdown(SocketShutdown.Both);
+                handler.Close();
+            }            //クライアントからの接続を終了する。
         }
     }
 }

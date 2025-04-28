@@ -10,7 +10,7 @@ namespace socketC
         public static void Main()
         {
             //今回送るHello World!
-            string st = "Hello World!";
+            string st = "Hello World!Shimura";
             Console.WriteLine("SimpleClient");
             SocketClient(st);
             Console.ReadKey();
@@ -20,14 +20,14 @@ namespace socketC
         public static void SocketClient(string st)
         {
             //IPアドレスやポートを設定(自PC、ポート:11000）
-            string hostName = Dns.GetHostName();
-            IPHostEntry ipHostInfo = Dns.GetHostEntry(hostName);
-            IPAddress ipAddress = ipHostInfo.AddressList[1];
-            IPEndPoint remoteEP = new IPEndPoint(ipAddress, 11000);
+            //string hostName = Dns.GetHostName();
+            //IPHostEntry ipHostInfo = Dns.GetHostEntry(hostName);
+            //IPAddress ipAddress = ipHostInfo.AddressList[1];
+            //IPEndPoint remoteEP = new IPEndPoint(ipAddress, 11000);
 
             //外部を指定する場合
-            // IPAddress ipAddress = IPAddress.Parse("203.0.113.42");
-            // IPEndPoint remoteEP = new IPEndPoint(ipAddress, 11000);
+            IPAddress ipAddress = IPAddress.Parse("172.25.91.135");
+            IPEndPoint remoteEP = new IPEndPoint(ipAddress, 11000);
 
             //ソケットを作成
             Socket socket = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
