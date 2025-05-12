@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleClient", "SimpleClien
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleHost", "SimpleHost\SimpleHost.csproj", "{87C29E6C-B59E-43D4-907E-EE7A2EDCBFCD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JankenHost1", "JankenHost1\JankenHost1.csproj", "{E6DED8C5-EB65-4D1C-A008-52F0B2AA326A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JankenClient1", "JankenClient1\JankenClient1.csproj", "{54358641-21D1-4360-8257-136DCD361679}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{87C29E6C-B59E-43D4-907E-EE7A2EDCBFCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87C29E6C-B59E-43D4-907E-EE7A2EDCBFCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87C29E6C-B59E-43D4-907E-EE7A2EDCBFCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6DED8C5-EB65-4D1C-A008-52F0B2AA326A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6DED8C5-EB65-4D1C-A008-52F0B2AA326A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6DED8C5-EB65-4D1C-A008-52F0B2AA326A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6DED8C5-EB65-4D1C-A008-52F0B2AA326A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54358641-21D1-4360-8257-136DCD361679}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54358641-21D1-4360-8257-136DCD361679}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54358641-21D1-4360-8257-136DCD361679}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54358641-21D1-4360-8257-136DCD361679}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
