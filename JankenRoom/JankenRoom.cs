@@ -33,8 +33,12 @@ namespace JankenRoom
             // クライアント2つの接続を待つ
             Socket client1 = listener.Accept();
             Console.WriteLine("クライアント1が接続しました。");
+            int bytesRec1 = client1.Receive(bytes);
+            Console.WriteLine($"{Encoding.UTF8.GetString(bytes, 0, bytesRec1)}");
             Socket client2 = listener.Accept();
             Console.WriteLine("クライアント2が接続しました。");
+            int bytesRec2 = client2.Receive(bytes);
+            Console.WriteLine($"{Encoding.UTF8.GetString(bytes, 0, bytesRec2)}");
 
             // クライアントにじゃんけんのメッセージを送信
             string sendData = "じゃんけんゲーム！\r\n0:ぐう　1:ちょき　2:ぱあ\r\n";
@@ -43,12 +47,12 @@ namespace JankenRoom
             client2.Send(msg);
 
             // クライアント1の手を受信
-            int bytesRec1 = client1.Receive(bytes);
+            bytesRec1 = client1.Receive(bytes);
             string client1HandStr = Encoding.UTF8.GetString(bytes, 0, bytesRec1);
             Console.WriteLine($"クライアント1の手: {client1HandStr}");
 
             // クライアント2の手を受信
-            int bytesRec2 = client2.Receive(bytes);
+            bytesRec2 = client2.Receive(bytes);
             string client2HandStr = Encoding.UTF8.GetString(bytes, 0, bytesRec2);
             Console.WriteLine($"クライアント2の手: {client2HandStr}");
 
