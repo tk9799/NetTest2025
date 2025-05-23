@@ -21,11 +21,11 @@ namespace JankenRoom
             string hostName = Dns.GetHostName();
             IPHostEntry ipHostInfo = Dns.GetHostEntry(hostName);
             IPAddress ipAddress = ipHostInfo.AddressList[1];
-            IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 11000);
+            IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 11000);//ローカル エンドポイントを取得
 
             // ソケットの作成
             Socket listener = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-            listener.Bind(localEndPoint);
+            listener.Bind(localEndPoint);//Socket をローカル エンドポイントと関連付ける？
             listener.Listen(10);
 
             Console.WriteLine("クライアントの接続を待っています...");
@@ -43,9 +43,11 @@ namespace JankenRoom
             // クライアントにじゃんけんのメッセージを送信
             string sendData = "じゃんけんゲーム！\r\n0:ぐう　1:ちょき　2:ぱあ\r\n";
             byte[] msg = Encoding.UTF8.GetBytes(sendData);
+            //Sendで送信
             client1.Send(msg);
             client2.Send(msg);
 
+            //接続してきたクライアントから初期データを受信
             // クライアント1の手を受信
             bytesRec1 = client1.Receive(bytes);
             string client1HandStr = Encoding.UTF8.GetString(bytes, 0, bytesRec1);
