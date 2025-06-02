@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -13,14 +13,7 @@ namespace JankenClient1
             string st = "じゃんけんしたい！";
             Console.WriteLine("JankenClient1");
             SocketClient(st);
-            //try
-            //{
-            //    Console.ReadKey();
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine("エラーが発生しました: " + ex.Message);
-            //}
+            Console.ReadKey();
         }
 
 
@@ -51,25 +44,27 @@ namespace JankenClient1
             }
             //Sendで送信している。
             byte[] msg = Encoding.UTF8.GetBytes(st + "<EOF>");
-            socket.Send(msg);//接続された Socket にデータを送信する
+            socket.Send(msg);
 
             //Receiveで受信している。
             byte[] bytes = new byte[1024];
-            int bytesRec = socket.Receive(bytes);//バインドされた Socket からデータを受信する
+            int bytesRec = socket.Receive(bytes);
             string data1 = Encoding.UTF8.GetString(bytes, 0, bytesRec);
             Console.WriteLine(data1);
 
-            // 文字を入力
-            string userInput = Console.ReadLine()!;
-            //入力した文字列を送信
+            // 入力した文字列を送信する
+            string userInput = Console.ReadLine();
+            // 入力した文字列を送信
             msg = Encoding.UTF8.GetBytes(userInput + "<EOF>");
-            socket.Send(msg);//接続された Socket にデータを送信する
+            socket.Send(msg);
 
             //Receiveで受信している。
             bytes = new byte[1024];
-            bytesRec = socket.Receive(bytes);//バインドされた Socket からデータを受信する
+            bytesRec = socket.Receive(bytes);
             data1 = Encoding.UTF8.GetString(bytes, 0, bytesRec);
             Console.WriteLine(data1);
+
+
 
             //ソケットを終了している。
             socket.Shutdown(SocketShutdown.Both);

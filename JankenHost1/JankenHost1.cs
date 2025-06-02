@@ -26,7 +26,6 @@ namespace JankenHost1
             //ここまでIPアドレスやポートの設定
 
             //ソケットの作成
-            //TCP/IPやUDPといったプロトコルを使ってネットワーク通信を行うためのインターフェース
             Socket listener = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
             //通信の受け入れ準備
             listener.Bind(localEndPoint);
@@ -36,7 +35,7 @@ namespace JankenHost1
             Socket handler = listener.Accept();
 
             // クライアントのIPアドレスを取得して出力
-            IPEndPoint? remoteIpEndPoint = handler.RemoteEndPoint as IPEndPoint;
+            IPEndPoint remoteIpEndPoint = handler.RemoteEndPoint as IPEndPoint;
             if (remoteIpEndPoint != null)
             {
                 Console.WriteLine($"接続元のIPアドレス: {remoteIpEndPoint.Address}");
@@ -85,11 +84,11 @@ namespace JankenHost1
                 }
                 else if ((hostHand + 1) % 3 == clientHand)
                 {
-                    result = "あなたの負け";
+                    result = "ホストの勝ち";
                 }
                 else
                 {
-                    result = "あなたの勝ち";
+                    result = "クライアントの勝ち";
                 }
             }
             else
